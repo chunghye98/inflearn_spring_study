@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.group.libraryapp.dto.user.request.UserCreateRequest;
 import com.group.libraryapp.dto.user.request.UserUpdateRequest;
 import com.group.libraryapp.dto.user.response.UserResponse;
-import com.group.libraryapp.service.user.UserService;
+import com.group.libraryapp.service.user.UserServiceV2;
 
 @RestController
 public class UserController {
 
-	private final UserService userService;
+	private final UserServiceV2 userService;
 
-	public UserController(UserService userService) {
+	public UserController(UserServiceV2 userService) {
 		this.userService = userService;
 	}
 

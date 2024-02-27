@@ -1,10 +1,6 @@
 package com.group.libraryapp.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.core.JdbcTemplate;
-
-import com.group.libraryapp.repository.user.UserRepository;
 
 @Configuration
 public class UserConfiguration {
