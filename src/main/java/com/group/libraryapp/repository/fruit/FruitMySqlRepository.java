@@ -10,7 +10,7 @@ import com.group.libraryapp.dto.fruit.response.FruitAmountReadResponse;
 
 @Primary
 @Repository
-public class FruitMySqlRepository implements FruitRepository {
+public class FruitMySqlRepository implements FruitJdbcRepository {
 
 	private final JdbcTemplate jdbcTemplate;
 

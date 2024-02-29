@@ -11,7 +11,7 @@ import com.group.libraryapp.domain.fruit.Fruit;
 import com.group.libraryapp.dto.fruit.response.FruitAmountReadResponse;
 
 @Repository
-public class FruitMemoryRepository implements FruitRepository{
+public class FruitMemoryRepository implements FruitJdbcRepository {
 	private final List<Fruit> fruits = new ArrayList<>();
 	private final AtomicLong counter = new AtomicLong();
 

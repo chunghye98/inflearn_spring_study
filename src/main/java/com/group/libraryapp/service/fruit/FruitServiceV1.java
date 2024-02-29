@@ -8,11 +8,11 @@ import com.group.libraryapp.dto.fruit.response.FruitAmountReadResponse;
 import com.group.libraryapp.repository.fruit.FruitMySqlRepository;
 
 @Service
-public class FruitService {
+public class FruitServiceV1 {
 
 	private final FruitMySqlRepository fruitRepository;
 
-	public FruitService(FruitMySqlRepository fruitRepository) {
+	public FruitServiceV1(FruitMySqlRepository fruitRepository) {
 		this.fruitRepository = fruitRepository;
 	}
 
