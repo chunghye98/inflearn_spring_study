@@ -10,35 +10,35 @@
 
 ### 요구 사항
 1. 팀 등록 기능
-- 회사에 있는 팀을 등록할 수 있어야 한다.
-- 필수 정보: `팀 이름`
+   - 회사에 있는 팀을 등록할 수 있어야 한다.
+   - 필수 정보: `팀 이름`
 2. 직원 등록 기능
-- 직원을 등록할 수 있어야 한다.
-- 필수 정보: `직원 이름` `팀의 매니저인지 아닌지 여부` `입사일` `생일`
+   - 직원을 등록할 수 있어야 한다.
+   - 필수 정보: `직원 이름` `팀의 매니저인지 아닌지 여부` `입사일` `생일`
 3. 팀 조회 기능
-- 모든 팀의 정보를 한 번에 조회 가능해야 한다.
-  ```json
-[
-    {
-        "name":"팀 이름",
-        "manager":"팀 매니저 이름" // 없을 경우 null
-        "memberCount" : 팀 인원 수 [숫자]
-    }, ...
-]
-```
+   - 모든 팀의 정보를 한 번에 조회 가능해야 한다.
+       ```json
+       [
+           {
+               "name":"팀 이름",
+               "manager":"팀 매니저 이름" // 없을 경우 null
+               "memberCount" : 팀 인원 수 [숫자]
+           }, ...
+       ]
+       ```
 4. 직원 조회 기능
-- 모든 직원의 정보를 한 번에 조회할 수 있어야 한다.
-  ```json
-[
-    {
-        "name" : "직원 이름",
-        "teamName" : "소속 팀 이름",
-        "role" : "MANAGER" or "MEMBER",
-        "birthday : "1989-01-01",
-        "workStartDate" : "2024-01-01"
-    }, ...
-]
-```
+   - 모든 직원의 정보를 한 번에 조회할 수 있어야 한다.
+       ```json
+       [
+           {
+               "name" : "직원 이름",
+               "teamName" : "소속 팀 이름",
+               "role" : "MANAGER" or "MEMBER",
+               "birthday : "1989-01-01",
+               "workStartDate" : "2024-01-01"
+           }, ...
+       ]
+       ```
 
 ## 프로젝트 개발
 ### 프로젝트 최초 설정
@@ -114,109 +114,8 @@ create table Member (
     foreign key (team_id) references Team (id)
 );
 
-show tables; // 생성한 테이블 확인
+show tables; # 생성한 테이블 확인
 ```
 
-### Entity 매핑
-__Team__
-```java
-@Entity
-public class Team {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	private String name;
-
-	@OneToMany(mappedBy = "team")
-	private List<Member> members = new ArrayList<>();
-
-	protected Team() {
-
-	}
-
-	public Team(String name) {
-		this.name = name;
-	}
-
-	public void addMember(Member member) {
-		this.members.add(member);
-		member.setTeam(this);
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public List<Member> getMembers() {
-		return members;
-	}
-}
-```
-
-__Member__
-```java
-@Entity
-public class Member {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	private String name;
-
-	@Enumerated(EnumType.STRING)
-	private Role role;
-
-	private LocalDate birthday;
-	private LocalDate workStartDate;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "team_id")
-	private Team team;
-
-	public Member() {
-	}
-
-	public Member(String name, boolean isManager, LocalDate birthday, LocalDate workStartDate) {
-		this.name = name;
-		this.role = Role.findRole(isManager);
-		this.birthday = birthday;
-		this.workStartDate = workStartDate;
-	}
-
-	public void setTeam(Team team) {
-		this.team = team;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public Role getRole() {
-		return role;
-	}
-
-	public LocalDate getBirthday() {
-		return birthday;
-	}
-
-	public LocalDate getWorkStartDate() {
-		return workStartDate;
-	}
-
-	public Team getTeam() {
-		return team;
-	}
-}
-```
 
