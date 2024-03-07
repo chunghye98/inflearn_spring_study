@@ -12,13 +12,12 @@ import com.group.libraryapp.dto.user.request.UserCreateRequest;
 import com.group.libraryapp.dto.user.request.UserUpdateRequest;
 import com.group.libraryapp.dto.user.response.UserResponse;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class UserServiceV2 {
 	private final UserRepository userRepository;
-
-	public UserServiceV2(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
 
 	@Transactional
 	public void saveUser(UserCreateRequest request) {

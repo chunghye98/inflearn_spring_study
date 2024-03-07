@@ -1,14 +1,17 @@
 package com.group.libraryapp.domain.user.loanhistory;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import com.group.libraryapp.domain.user.User;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class UserLoanHistory {
 
@@ -21,9 +24,6 @@ public class UserLoanHistory {
 	private User user;
 	private String bookName;
 	private boolean isReturn; // tinyint에 매핑됨
-
-	public UserLoanHistory() {
-	}
 
 	public UserLoanHistory(User user, String bookName) {
 		this.user = user;

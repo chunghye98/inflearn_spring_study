@@ -9,14 +9,13 @@ import com.group.libraryapp.dto.user.request.UserUpdateRequest;
 import com.group.libraryapp.dto.user.response.UserResponse;
 import com.group.libraryapp.repository.user.UserJdbcRepository;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class UserServiceV1 {
 
 	private final UserJdbcRepository userRepository;
-
-	public UserServiceV1(UserJdbcRepository userRepository) {
-		this.userRepository = userRepository;
-	}
 
 	public void saveUser(UserCreateRequest request) {
 		userRepository.saveUser(request.getName(), request.getAge());

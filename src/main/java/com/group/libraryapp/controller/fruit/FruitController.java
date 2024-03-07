@@ -16,14 +16,13 @@ import com.group.libraryapp.dto.fruit.response.FruitCountResponse;
 import com.group.libraryapp.dto.fruit.response.FruitResponse;
 import com.group.libraryapp.service.fruit.FruitServiceV2;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @RestController
 public class FruitController {
 
 	private final FruitServiceV2 fruitService;
-
-	public FruitController(FruitServiceV2 fruitService) {
-		this.fruitService = fruitService;
-	}
 
 	@PostMapping("/api/v1/fruit")
 	public void createFruit(@RequestBody FruitCreateRequest request) {

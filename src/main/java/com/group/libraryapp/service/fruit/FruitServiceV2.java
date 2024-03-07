@@ -13,14 +13,13 @@ import com.group.libraryapp.dto.fruit.response.FruitAmountReadResponse;
 import com.group.libraryapp.dto.fruit.response.FruitCountResponse;
 import com.group.libraryapp.dto.fruit.response.FruitResponse;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class FruitServiceV2 {
 
 	private final FruitRepository fruitRepository;
-
-	public FruitServiceV2(FruitRepository fruitRepository) {
-		this.fruitRepository = fruitRepository;
-	}
 
 	public void createFruit(FruitCreateRequest request) {
 		fruitRepository.save(new Fruit(request.getName(), request.getPrice(), request.getWarehousingDate()));

@@ -4,6 +4,9 @@ import java.time.LocalDate;
 
 import com.group.libraryapp.domain.fruit.Fruit;
 
+import lombok.Getter;
+
+@Getter
 public class FruitResponse {
 	private String name;
 	private long price;
@@ -13,17 +16,5 @@ public class FruitResponse {
 		this.name = fruit.getName();
 		this.price = fruit.getPrice();
 		this.warehousingDate = fruit.getWarehousingDate();
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public long getPrice() {
-		return price;
-	}
-
-	public LocalDate getWarehousingDate() {
-		return warehousingDate;
 	}
 }

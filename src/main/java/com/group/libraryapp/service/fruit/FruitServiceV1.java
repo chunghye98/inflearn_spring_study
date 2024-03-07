@@ -7,14 +7,13 @@ import com.group.libraryapp.dto.fruit.request.FruitUpdateRequest;
 import com.group.libraryapp.dto.fruit.response.FruitAmountReadResponse;
 import com.group.libraryapp.repository.fruit.FruitMySqlRepository;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class FruitServiceV1 {
 
 	private final FruitMySqlRepository fruitRepository;
-
-	public FruitServiceV1(FruitMySqlRepository fruitRepository) {
-		this.fruitRepository = fruitRepository;
-	}
 
 	public void createFruit(FruitCreateRequest request) {
 		fruitRepository.createFruit(request.getName(), request.getPrice(), request.getWarehousingDate());
